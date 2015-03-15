@@ -27,4 +27,13 @@ Volt.configure do |config|
   # Use username instead of email as the login
   # config.public.auth.use_username = true
 
+  config.db_driver = 'mongo'
+  config.db_name = (config.app_name + '_' + Volt.env.to_s)
+
+  if ENV['MONGOLAB_URI'].present?
+    config.db_uri = ENV['MONGOLAB_URI']
+  else
+    config.db_host = 'localhost'
+    config.db_port = 27017
+  end
 end
