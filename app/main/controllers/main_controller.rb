@@ -3,12 +3,22 @@ class MainController < Volt::ModelController
   end
 
   def start_retro
-    new_retro = { name: page._new_retro }
+    new_retro = { name: page._new_retro, parameter_name: parameterize(page._new_retro) }
     store._retros << new_retro
-    go "/#{page._new_retro}"
+    go "/#{new_retro[:parameter_name]}"
   end
 
   private
+
+  def parameterize(string)
+    string.strip
+      .gsub(/['`]/,"")
+      .gsub(/\s*@\s*/, " at ")
+      .gsub(/\s*&\s*/, " and ")
+      .gsub(/\s*[^A-Za-z0-9\.\-]\s*/, '_'  )
+      .gsub(/_+/,"_")
+      .gsub(/\A[_\.]+|[_\.]+\z/,"")
+  end
 
   # The main template contains a #template binding that shows another
   # template.  This is the path to that template.  It may change based
