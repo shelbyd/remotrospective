@@ -3,9 +3,14 @@ class MainController < Volt::ModelController
   end
 
   def start_retro
-    new_retro = { name: page._new_retro, parameter_name: parameterize(page._new_retro) }
-    store._retros << new_retro
-    go "/#{new_retro[:parameter_name]}"
+    parameter_retro_name = parameterize(page._new_retro)
+    store._retros.find({ parameter_name: parameter_retro_name }).then do |results|
+      if results.size == 0
+        new_retro = { name: page._new_retro, parameter_name: parameter_retro_name }
+        store._retros << new_retro
+      end
+      go "/#{parameter_retro_name}"
+    end
   end
 
   private
