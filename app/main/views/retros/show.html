@@ -4,17 +4,49 @@
 <:Body>
   <h1>Participate in {{ _name }}</h1>
 
-  <p>{{ _items.size }}</p>
+  <form e-submit="add_item" role="form" class="form-inline">
+    <select class="form-control" value=" {{ page._new_item._category }}">
+      <option value="happy">Happy</option>
+      <option value="neutral">Neutral</option>
+      <option value="sad">Sad</option>
+      <option value="action_item">Action Item</option>
+    </select>
 
-  {{ _items.each do |item| }}
-    <p>{{ item._text }}</p>
-  {{ end }}
-
-  <form e-submit="add_item" role="form">
     <div class="form-group">
-      <label>Item Content</label>
-      <input class="form-control" type="text" value="{{ page._new_item }}" />
+      <input class="form-control" type="text" value="{{ page._new_item._text }}" />
     </div>
 
-    <button class="btn" type="submit">Add Item</button>
+    <button class="btn btn-success" type="submit">Add Item</button>
   </form>
+
+  <div class="row">
+    <div class="col-lg-4">
+      <h2>Happy</h2>
+
+      {{ _items.each do |item| }}
+        {{ if item._category == 'happy' }}
+          <p>{{ item._text }}</p>
+        {{ end }}
+      {{ end }}
+    </div>
+
+    <div class="col-lg-4">
+      <h2>Neutral</h2>
+
+      {{ _items.each do |item| }}
+        {{ if item._category == 'neutral' }}
+          <p>{{ item._text }}</p>
+        {{ end }}
+      {{ end }}
+    </div>
+
+    <div class="col-lg-4">
+      <h2>Sad</h2>
+
+      {{ _items.each do |item| }}
+        {{ if item._category == 'sad' }}
+          <p>{{ item._text }}</p>
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
