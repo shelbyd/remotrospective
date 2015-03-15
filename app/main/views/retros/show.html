@@ -4,20 +4,24 @@
 <:Body>
   <h1>Participate in {{ _name }}</h1>
 
-  <form e-submit="add_item" role="form" class="form-inline">
-    <select class="form-control" value=" {{ page._new_item._category }}">
-      <option value="happy">Happy</option>
-      <option value="neutral">Neutral</option>
-      <option value="sad">Sad</option>
-      <option value="action_item">Action Item</option>
-    </select>
+  <div class="row">
+    <div class="col-xs-12">
+      <form e-submit="add_item" role="form" class="form-inline">
+        <select class="form-control" value=" {{ page._new_item._category }}">
+          <option value="happy">Happy</option>
+          <option value="neutral">Neutral</option>
+          <option value="sad">Sad</option>
+          <option value="action_item">Action Item</option>
+        </select>
 
-    <div class="form-group">
-      <input class="form-control" type="text" value="{{ page._new_item._text }}" />
+        <div class="form-group">
+          <input class="form-control" type="text" value="{{ page._new_item._text }}" />
+        </div>
+
+        <button class="btn btn-success" type="submit">Add Item</button>
+      </form>
     </div>
-
-    <button class="btn btn-success" type="submit">Add Item</button>
-  </form>
+  </div>
 
   <div class="row">
     <div class="col-lg-4">
@@ -34,13 +38,25 @@
   </div>
 
 <:Category>
-  <h2>{{ attrs.title }}</h2>
-
-  {{ _items.each do |item| }}
-    {{ if item._category == attrs.category }}
-      <:item model="{{ item }}"/>
-    {{ end }}
-  {{ end }}
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      {{ attrs.title }}
+    </div>
+    <ul class="list-group">
+      {{ _items.each do |item| }}
+        {{ if item._category == attrs.category }}
+          <li class="list-group-item">
+            <:item model="{{ item }}"/>
+          </li>
+        {{ end }}
+      {{ end }}
+    </ul>
+  </div>
 
 <:Item>
-  <p>{{ _text }}</p>
+  <span class="btn-group btn-group-xs" role="group">
+    <button class="btn btn-danger btn-xs" e-click="remove_item(self)">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+  </span>
+  {{ _text }}

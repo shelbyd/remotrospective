@@ -11,4 +11,8 @@ class RetrosController < Volt::ModelController
     _items << page._new_item.to_h
     page._new_item = Volt::Model.new category: 'happy'
   end
+
+  def remove_item(item)
+    _items.delete(item)
+  end
 end
