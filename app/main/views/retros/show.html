@@ -21,32 +21,26 @@
 
   <div class="row">
     <div class="col-lg-4">
-      <h2>Happy</h2>
-
-      {{ _items.each do |item| }}
-        {{ if item._category == 'happy' }}
-          <p>{{ item._text }}</p>
-        {{ end }}
-      {{ end }}
+      <:category title="Happy" category='happy' model="{{ self }}"/>
     </div>
 
     <div class="col-lg-4">
-      <h2>Neutral</h2>
-
-      {{ _items.each do |item| }}
-        {{ if item._category == 'neutral' }}
-          <p>{{ item._text }}</p>
-        {{ end }}
-      {{ end }}
+      <:category title="Neutral" category='neutral' model="{{ self }}"/>
     </div>
 
     <div class="col-lg-4">
-      <h2>Sad</h2>
-
-      {{ _items.each do |item| }}
-        {{ if item._category == 'sad' }}
-          <p>{{ item._text }}</p>
-        {{ end }}
-      {{ end }}
+      <:category title="Sad" category='sad' model="{{ self }}"/>
     </div>
   </div>
+
+<:Category>
+  <h2>{{ attrs.title }}</h2>
+
+  {{ _items.each do |item| }}
+    {{ if item._category == attrs.category }}
+      <:item model="{{ item }}"/>
+    {{ end }}
+  {{ end }}
+
+<:Item>
+  <p>{{ _text }}</p>
