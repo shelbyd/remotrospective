@@ -1,0 +1,20 @@
+<:Title>
+  {{ _name }}
+
+<:Body>
+  <h1>Participate in {{ _name }}</h1>
+
+  <p>{{ _items.size }}</p>
+
+  {{ _items.each do |item| }}
+    <p>{{ item._text }}</p>
+  {{ end }}
+
+  <form e-submit="add_item" role="form">
+    <div class="form-group">
+      <label>Item Content</label>
+      <input class="form-control" type="text" value="{{ page._new_item }}" />
+    </div>
+
+    <button class="btn" type="submit">Add Item</button>
+  </form>

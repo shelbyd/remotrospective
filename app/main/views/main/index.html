@@ -2,5 +2,13 @@
   Home
 
 <:Body>
-  <h1>Home</h1>
+  <h1>Start a Retro</h1>
 
+  <form e-submit="start_retro" role="form">
+    <div class="form-group">
+      <label>Retro Name</label>
+      <input class="form-control" type="text" value="{{ page._new_retro }}" />
+    </div>
+
+    <button class="btn" type="submit">Start</button>
+  </form>

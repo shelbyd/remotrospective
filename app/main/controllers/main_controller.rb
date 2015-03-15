@@ -1,11 +1,11 @@
-# By default Volt generates this controller for your Main component
 class MainController < Volt::ModelController
   def index
-    # Add code for when the index view is loaded
   end
 
-  def about
-    # Add code for when the about view is loaded
+  def start_retro
+    new_retro = { name: page._new_retro }
+    store._retros << new_retro
+    go "/#{page._new_retro}"
   end
 
   private
@@ -18,8 +18,8 @@ class MainController < Volt::ModelController
   end
 
   # Determine if the current nav component is the active one by looking
-  # at the first part of the url against the href attribute.
   def active_tab?
     url.path.split('/')[1] == attrs.href.split('/')[1]
   end
 end
+  # at the first part of the url against the href attribute.
