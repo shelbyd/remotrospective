@@ -17,6 +17,7 @@ class MainController < Volt::ModelController
 
   def parameterize(string)
     string.strip
+      .downcase
       .gsub(/['`]/,"")
       .gsub(/\s*@\s*/, " at ")
       .gsub(/\s*&\s*/, " and ")
