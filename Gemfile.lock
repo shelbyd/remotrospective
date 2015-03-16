@@ -128,7 +128,6 @@ GEM
       volt-sockjs (~> 0.3.4.4)
       yui-compressor (>= 0.12.0)
     volt-bootstrap (0.0.10)
-    volt-bootstrap-jumbotron-theme (0.0.5)
     volt-fields (0.0.13)
     volt-sockjs (0.3.4.4)
       faye-websocket (~> 0.7.1)
@@ -154,5 +153,4 @@ DEPENDENCIES
   thin (~> 1.6.0)
   volt (= 0.8.26)
   volt-bootstrap
-  volt-bootstrap-jumbotron-theme
   volt-user-templates

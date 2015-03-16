@@ -9,9 +9,6 @@ ruby '2.1.3'
 # Twitter bootstrap
 gem 'volt-bootstrap'
 
-# Simple theme for bootstrap, remove to theme yourself.
-gem 'volt-bootstrap-jumbotron-theme'
-
 # User templates for login, signup, and logout menu.
 gem 'volt-user-templates'
 
