@@ -4,7 +4,6 @@
 <:Body>
   <h1>{{ _name }}</h1>
 
-
   {{ if params._presenter != 'true' }}
     <div class="row">
       <div class="col-xs-12">
@@ -71,7 +70,7 @@
   </div>
 
 <:Category>
-  <div class="panel panel-default">
+  <div class="panel panel-info">
     <div class="panel-heading">
       {{ attrs.title }}
     </div>
@@ -86,12 +85,11 @@
 
 <:Item>
   <a
-    class="list-group-item {{if page._focused_item == self}}active{{end}}"
+    class="list-group-item
+      {{if page._focused_item == self}}active{{end}}
+      {{if _completed == true}}disabled{{end}}
+      "
     e-click="page._focused_item = page._focused_item == self ? nil : self">
     <span class="badge">{{ _score }}</span>
-    {{ if not _completed.nil? and _completed }}
-      <s>{{ _text }}</s>
-    {{ else }}
-      {{ _text }}
-    {{ end }}
+    {{ _text }}
   </a>
