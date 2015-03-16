@@ -30,15 +30,19 @@
         <div class="btn-group" role="group">
           <button class="btn btn-default"
                   e-click="page._focused_item._score = page._focused_item._score.or(0) + 1">
-            <span class="glyphicon glyphicon-plus"></span>
+            Vote For
           </button>
           <button class="btn btn-default"
                   e-click="page._focused_item._score = page._focused_item._score.or(0) - 1">
-            <span class="glyphicon glyphicon-minus"></span>
+            Remove Vote
+          </button>
+          <button class="btn btn-default"
+                  e-click="complete_item(page._focused_item)">
+            Complete
           </button>
           <button class="btn btn-default"
                   e-click="remove_item(page._focused_item)">
-            <span class="glyphicon glyphicon-remove"></span>
+            Delete
           </button>
         </div>
       {{ end }}
@@ -78,5 +82,9 @@
     class="list-group-item {{if page._focused_item == self}}active{{end}}"
     e-click="page._focused_item = page._focused_item == self ? nil : self">
     <span class="badge">{{ _score }}</span>
-    {{ _text }}
+    {{ if not _completed.nil? and _completed }}
+      <s>{{ _text }}</s>
+    {{ else }}
+      {{ _text }}
+    {{ end }}
   </a>
