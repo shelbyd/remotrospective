@@ -16,7 +16,7 @@ class RetrosController < Volt::ModelController
     _items.delete(item)
   end
 
-  def complete_item(item)
-    item._completed = true
+  def toggle_item_complete(item)
+    item._completed = !item._completed.or(false)
   end
 end
