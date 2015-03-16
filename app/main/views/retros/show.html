@@ -2,55 +2,58 @@
   {{ _name }}
 
 <:Body>
-  <h1>Participate in {{ _name }}</h1>
+  <h1>{{ _name }}</h1>
 
-  <div class="row">
-    <div class="col-xs-12">
-      <form e-submit="add_item" role="form" class="form-inline">
-        <select class="form-control" value=" {{ page._new_item._category }}">
-          <option value="happy">Happy</option>
-          <option value="neutral">Neutral</option>
-          <option value="sad">Sad</option>
-          <option value="action_item">Action Item</option>
-        </select>
 
-        <div class="form-group">
-          <input class="form-control" type="text" value="{{ page._new_item._text }}" />
-        </div>
-
-        <button class="btn btn-success" type="submit">Add Item</button>
-      </form>
-    </div>
-  </div>
-
-  <hr>
-
-  {{ if not page._focused_item.nil? }}
+  {{ if params._presenter != 'true' }}
     <div class="row">
-      <div class="col-sm-12">
-        <span>With Selected Item:</span>
-        <div class="btn-group" role="group">
-          <button class="btn btn-default"
-                  e-click="page._focused_item._score = page._focused_item._score.or(0) + 1">
-            Vote For
-          </button>
-          <button class="btn btn-default"
-                  e-click="page._focused_item._score = page._focused_item._score.or(0) - 1">
-            Remove Vote
-          </button>
-          <button class="btn btn-default"
-                  e-click="complete_item(page._focused_item)">
-            Complete
-          </button>
-          <button class="btn btn-default"
-                  e-click="remove_item(page._focused_item)">
-            Delete
-          </button>
-        </div>
+      <div class="col-xs-12">
+        <form e-submit="add_item" role="form" class="form-inline">
+          <select class="form-control" value=" {{ page._new_item._category }}">
+            <option value="happy">Happy</option>
+            <option value="neutral">Neutral</option>
+            <option value="sad">Sad</option>
+            <option value="action_item">Action Item</option>
+          </select>
+
+          <div class="form-group">
+            <input class="form-control" type="text" value="{{ page._new_item._text }}" />
+          </div>
+
+          <button class="btn btn-success" type="submit">Add Item</button>
+        </form>
       </div>
     </div>
 
     <hr>
+
+    {{ if not page._focused_item.nil? }}
+      <div class="row">
+        <div class="col-sm-12">
+          <span>With Selected Item:</span>
+          <div class="btn-group" role="group">
+            <button class="btn btn-default"
+                    e-click="page._focused_item._score = page._focused_item._score.or(0) + 1">
+              Vote For
+            </button>
+            <button class="btn btn-default"
+                    e-click="page._focused_item._score = page._focused_item._score.or(0) - 1">
+              Remove Vote
+            </button>
+            <button class="btn btn-default"
+                    e-click="complete_item(page._focused_item)">
+              Complete
+            </button>
+            <button class="btn btn-default"
+                    e-click="remove_item(page._focused_item)">
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+    {{ end }}
   {{ end }}
 
   <div class="row">
