@@ -81,19 +81,16 @@
     <ul class="list-group">
       {{ _items.each do |item| }}
         {{ if item._category == attrs.category }}
-            <:item model="{{ item }}"/>
+          <a
+            class="list-group-item
+              {{if page._focused_item == item}}active{{end}}
+              {{if item._completed == true}}disabled{{end}}
+              "
+            e-click="page._focused_item = page._focused_item == item ? nil : item">
+            <span class="badge">{{ item._score }}</span>
+            {{ item._text }}
+          </a>
         {{ end }}
       {{ end }}
     </ul>
   </div>
-
-<:Item>
-  <a
-    class="list-group-item
-      {{if page._focused_item == self}}active{{end}}
-      {{if _completed == true}}disabled{{end}}
-      "
-    e-click="page._focused_item = page._focused_item == self ? nil : self">
-    <span class="badge">{{ _score }}</span>
-    {{ _text }}
-  </a>
