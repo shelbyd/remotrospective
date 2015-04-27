@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'volt', '0.8.26'
+gem 'volt', '0.9.1.pre2'
 
 ruby '2.1.3'
 
