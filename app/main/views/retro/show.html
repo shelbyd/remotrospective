@@ -32,11 +32,11 @@
           <span>With Selected Item:</span>
           <div class="btn-group" role="group">
             <button class="btn btn-default"
-                    e-click="page._focused_item._score = page._focused_item._score.or(0) + 1">
+                    e-click="page._focused_item._score = (page._focused_item._score || 0) + 1">
               Vote For
             </button>
             <button class="btn btn-default"
-                    e-click="page._focused_item._score = page._focused_item._score.or(0) - 1">
+                    e-click="page._focused_item._score = (page._focused_item._score || 0) - 1">
               Remove Vote
             </button>
             <button class="btn btn-default"
