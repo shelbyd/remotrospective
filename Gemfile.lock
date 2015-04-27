@@ -85,9 +85,9 @@ GEM
       uglifier (>= 2.4.0)
       yui-compressor (~> 0.12.0)
     volt-bootstrap (0.0.10)
-    volt-fields (0.0.13)
-    volt-user-templates (0.0.4)
-      volt-fields (~> 0.0.11)
+    volt-fields (0.1.0)
+    volt-user_templates (0.1.6)
+      volt-fields (~> 0.1.0)
     websocket-driver (0.5.4)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
@@ -101,4 +101,4 @@ DEPENDENCIES
   thin (~> 1.6.0)
   volt (= 0.9.1.pre2)
   volt-bootstrap
-  volt-user-templates
+  volt-user_templates

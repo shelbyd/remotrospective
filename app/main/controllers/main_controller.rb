@@ -5,12 +5,12 @@ module Main
 
     def start_retro
       parameter_retro_name = parameterize(page._new_retro)
-      store._retros.find({ parameter_name: parameter_retro_name }).then do |results|
+      store._retros.where({ parameter_name: parameter_retro_name }).then do |results|
         if results.size == 0
           new_retro = { name: page._new_retro, parameter_name: parameter_retro_name }
           store._retros << new_retro
         end
-        go "/#{parameter_retro_name}"
+        redirect_to "/#{parameter_retro_name}"
       end
     end
 

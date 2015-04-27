@@ -2,7 +2,7 @@ class RetrosController < Volt::ModelController
   def show
     self.model = page
     page._new_item._category = page._new_item._category.or('happy')
-    store._retros.find({parameter_name: params._name }).then do |results|
+    store._retros.where({parameter_name: params._name }).then do |results|
       self.model = results[0]
     end
   end

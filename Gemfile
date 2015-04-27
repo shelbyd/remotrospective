@@ -10,7 +10,7 @@ ruby '2.1.3'
 gem 'volt-bootstrap'
 
 # User templates for login, signup, and logout menu.
-gem 'volt-user-templates'
+gem 'volt-user_templates'
 
 # Server for MRI
 platform :mri do
